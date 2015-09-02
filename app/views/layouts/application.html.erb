@@ -7,10 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% flash.each do |message| %>
-    <div class="flash"><%= message %></div>
+  <div id="container">
+	<div id="user_nav">
+		<% if user_signed_in? %>
+		  Signed in as <%= current_user.email %>. 
+		  <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+		<% else %>
+		  <%= link_to "Sign up", new_user_registration_path %> or 
+		  <%= link_to "Sign in", new_user_session_path %>
+		<% end %>
+	</div>
+
+    <% flash.each do |message_type, message| %>
+      <div class="flash"><%= message %></div>
+    <% end %>
+    
+  </div>
+	<% if user_signed_in? %>
+    <%= yield %>
   <% end %>
-<%= yield %>
 
 </body>
 </html>
