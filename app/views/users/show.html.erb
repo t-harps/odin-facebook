@@ -1,3 +1,31 @@
 Basic User profile page, will have more...
-
+<br>
 Email: <%= @user.email %>
+<% unless current_user == @user || current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+  <%= render 'add_friend', object: @user %>
+<% end %>
+<br>
+Current Friends: 
+<% @user.friends.each do |friend| %>
+  <%= friend.email %>
+  <% if current_user == @user %>
+  	<%= render 'unfriend', object: friend %>
+  <% end %>
+<% end %>
+
+<br>
+<% if current_user == @user %>
+	Requests you have sent:
+	<% @user.pending_friends.each do |friend| %>
+	  <%= friend.email %>
+	<% end %>
+	<br>
+	Friend Requests you have received: 
+	<% @user.friend_requests.each do |friend| %>
+	  <br>
+	  <%= friend.email %>
+	  <%= render 'add_friend', object: friend %>
+	<% end %>
+	<br>
+<% end %>
+
