@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :posts
   has_many :friendships
   has_many :friends, -> { where "status = 'accepted'" }, :through => :friendships
   has_many :pending_friends, -> { where "status = 'pending'" }, :through => :friendships, source: :friend
