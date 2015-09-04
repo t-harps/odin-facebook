@@ -1,0 +1,6 @@
+<% if comment.user == current_user %>
+  <p><%= link_to "You: ", comment.user %>
+<% else %>
+  <p><%= link_to " #{comment.user.email}: ", comment.user %>
+<% end %>
+- <%= comment.body %> -</p>

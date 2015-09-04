@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :comments,       only: [:create, :destroy, :edit, :update]
   resources :likes,       only: [:create, :destroy]
   resources :posts,       except: [:edit, :update]
   resources :users,       only: [:index, :show]

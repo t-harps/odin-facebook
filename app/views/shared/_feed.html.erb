@@ -1,4 +1,4 @@
-<p> Feed: </p>
+<p> Recent posts: </p>
 <% @feed_items.each do |post| %>
   <%= render post %>
   <% unless (post.likes.map {|l| l.user_id}).include?(current_user.id) %>
@@ -6,4 +6,8 @@
   <% else %>
   	<%= render 'shared/unlike_button', object: post %>
   <% end %>
+  <% if post.comments.exists? %>
+    <P>Comments: <%= render post.comments %>
+  <% end %>
+  <%= render 'shared/comment_form', object: post %>
 <% end %>

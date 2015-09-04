@@ -41,16 +41,10 @@ Email: <%= @user.email %>
   <% end %>
 <% end %>
 <br>
+
 <% if @user.posts.any? %>
-  Posts: 
-  <% @user.posts.each do |post| %>
-  	<%= render post %>
-  	<% unless (post.likes.map {|l| l.user_id}).include?(current_user.id) %>
-  	  <%= render 'shared/like_button', object: post %>
-  	<% else %>
-  	  <%= render 'shared/unlike_button', object: post %>
-  	<% end %>
-  <% end %>
+  <% @feed_items = @user.posts %>
+  <%= render 'shared/feed' %>
 <% end %>
 
 

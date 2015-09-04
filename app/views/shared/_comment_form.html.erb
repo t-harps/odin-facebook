@@ -1,0 +1,5 @@
+<%= form_for(current_user.comments.build) do |f| %>
+  <%= f.hidden_field :post_id, :value => object.id %>
+  <%= f.text_area :body, placeholder: "Compose new comment..." %>
+  <%= f.submit "Comment" %>
+<% end %>
