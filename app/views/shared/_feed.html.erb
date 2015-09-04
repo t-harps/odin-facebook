@@ -1,4 +1,9 @@
 <p> Feed: </p>
 <% @feed_items.each do |post| %>
   <%= render post %>
+  <% unless (post.likes.map {|l| l.user_id}).include?(current_user.id) %>
+    <%= render 'shared/like_button', object: post %>
+  <% else %>
+  	<%= render 'shared/unlike_button', object: post %>
+  <% end %>
 <% end %>

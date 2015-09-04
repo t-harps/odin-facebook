@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :friendships, dependent: :destroy
   has_many :friends, -> { where "status = 'accepted'" }, :through => :friendships
   has_many :pending_friends, -> { where "status = 'pending'" }, :through => :friendships, source: :friend

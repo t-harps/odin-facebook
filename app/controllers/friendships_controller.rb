@@ -6,16 +6,16 @@ class FriendshipsController < ApplicationController
 		  Friendship.accept(current_user, @friend)
 		  flash[:notice] = "Accepted friend request!"
 		  respond_to do |format|
-        format.html { redirect_to current_user }
-        format.js
-      end
+            format.html { redirect_to current_user }
+            format.js
+          end
 		else
 		  Friendship.request(current_user, @friend)
 		  flash[:notice] = "Sent friend request"
 		  respond_to do |format|
-        format.html { redirect_to @friend }
-        format.js
-      end
+            format.html { redirect_to @friend }
+            format.js
+          end
 		end
 	end
 
