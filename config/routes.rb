@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  resources :posts,       except: [:edit, :update]
   resources :users,       only: [:index, :show]
   resources :friendships, only: [:create, :destroy]
   root 'static_pages#index'

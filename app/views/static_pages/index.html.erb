@@ -1,1 +1,7 @@
-Welcome to Facebook.
+<p> Welcome to Facebook. </p>
+<% if user_signed_in? %>
+  <%= render "shared/post_form" %>
+  <% if @feed_items.any? %>
+    <%= render "shared/feed" %>
+  <% end %>
+<% end %>

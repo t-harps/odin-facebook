@@ -1,0 +1,7 @@
+<% if post.user == current_user %>
+  <p>Author: <%= link_to "You", post.user %>
+<% else %>
+  <p> Author: <%= link_to " #{post.user.email}", post.user %>
+<% end %>
+-- Date Posted: <%= post.created_at %> <p>
+<p>- <%= post.body %> -</p>
