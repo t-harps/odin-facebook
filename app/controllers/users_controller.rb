@@ -7,4 +7,5 @@ class UsersController < ApplicationController
   	@post = current_user.posts.build
   	@user = User.find(params[:id])
   end
+
 end

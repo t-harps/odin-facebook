@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :comments,       only: [:create, :destroy, :edit, :update]
   resources :likes,       only: [:create, :destroy]
   resources :posts,       except: [:edit, :update]
-  resources :users,       only: [:index, :show]
+  resources :users,       only: [:index, :show, :edit]
   resources :friendships, only: [:create, :destroy]
   root 'static_pages#index'
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,13 @@
 All Users
 
 <% @users.each do |user| %>
-  <%= link_to user.email, user %>
-  
+  <br>
+  <% if current_user == user %>
+  	<%= link_to "You", user %>
+  <% else %>
+    <%= link_to user.email, user %>
+  <% end %>
+  <% unless current_user == user || current_user.friends.include?(user) || current_user.pending_friends.include?(user) %>
+  <%= render 'add_friend', object: user %>
+<% end %>
 <% end %>

@@ -9,6 +9,7 @@
 		  <%= link_to "#{current_user.friend_requests.count}", current_user %>
  		<% end %>
 	  <% else %>
+	    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
 		<%= link_to "Sign up", new_user_registration_path %> or 
 		<%= link_to "Sign in", new_user_session_path %>
 	<% end %>
