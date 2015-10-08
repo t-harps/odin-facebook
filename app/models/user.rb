@@ -13,6 +13,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          :omniauth_providers => [:facebook]
 
+  after_create :send_admin_mail
+  def send_admin_mail
+    UserMailer.welcome_email(self).deliver
+  end
+
   def friends?(other_user)
   	friends.include?(other_user)
   end
