@@ -9,3 +9,5 @@ class UserMailer < Devise::Mailer
 	mail(to: @user.email, subject: 'Welcome to Fakebook')
   end
 end
+
+
