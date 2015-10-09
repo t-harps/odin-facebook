@@ -1,58 +1,67 @@
---
-<br>
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.email %>
-</h1>
-<% if current_user == @user %>
-  <a href="http://gravatar.com/emails" target="_blank">change profile picture</a>
-<% end %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.email %>
+        <% if current_user == @user %>
+          <br>
+          <a href="http://gravatar.com/emails" target="_blank">change profile picture</a>
+        <% end %>
+      </h1>
+    </section>
+    <section class="post_form">
+      <% if current_user == @user %>
+        <%= render 'shared/post_form' %>
+      <% end %>
+    </section>
 
-<% if current_user == @user %>
-  <%= render 'shared/post_form' %>
-<% end %>
-
-<% unless current_user == @user || current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
-  <%= render 'add_friend', object: @user %>
-<% end %>
-<br>
-
-<% if @user.friends.any? %>
-	Friends: 
-	<% @user.friends.each do |friend| %>
-	  <%= link_to "#{friend.email}", friend %>
-	  <% if current_user == @user %>
-	  	<%= render 'unfriend', object: friend %>
-	  <% end %>
-	<% end %>
-<% end %>
-
-<br>
-<% if current_user == @user %>
-	<% if @user.pending_friends.any? %>
-		Requests you have sent:
-		<% @user.pending_friends.each do |friend| %>
-		  <%= friend.email %>
+		<% unless current_user == @user || current_user.friends.include?(@user) || current_user.pending_friends.include?(@user) %>
+		  <%= render 'add_friend', object: @user %>
 		<% end %>
 		<br>
-	<% end %>
 
-	<% if @user.friend_requests.any? %>
-	  Friend Requests you have received: 
-		<% @user.friend_requests.each do |friend| %>
-		  <br>
-		  <%= friend.email %>
-		  <%= render 'add_friend', object: friend %>
+		<% if @user.friends.any? %>
+			Friends: 
+			<% @user.friends.each do |friend| %>
+			  <%= link_to "#{friend.email}", friend %>
+			  <% if current_user == @user %>
+			  	<%= render 'unfriend', object: friend %>
+			  <% end %>
+			<% end %>
+		<% end %>
+
+		<br>
+		<% if current_user == @user %>
+			<% if @user.pending_friends.any? %>
+				Requests you have sent:
+				<% @user.pending_friends.each do |friend| %>
+				  <%= friend.email %>
+				<% end %>
+				<br>
+			<% end %>
+
+			<% if @user.friend_requests.any? %>
+			  Friend Requests you have received: 
+				<% @user.friend_requests.each do |friend| %>
+				  <br>
+				  <%= friend.email %>
+				  <%= render 'add_friend', object: friend %>
+				<% end %>
+				<br>
+		  <% end %>
 		<% end %>
 		<br>
-  <% end %>
-<% end %>
-<br>
-
-<% if @user.posts.any? %>
-  <% @feed_items = @user.posts %>
-  <%= render 'shared/feed' %>
-<% end %>
+  </aside>
+	<div class="col-md-8">
+		<% if @user.posts.any? %>
+		  <% @feed_items = @user.posts %>
+		  <ol class="posts">
+		    <%= render 'shared/feed' %>
+		  </ol>
+		<% end %>
+	</div>
+</div>
 
 
 

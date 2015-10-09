@@ -1,23 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>OdinFacebook</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="container">
-	<%= render 'layouts/nav_bar' %>
+  <head>
+    <title>OdinFacebook</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
 
-    <% flash.each do |message_type, message| %>
-      <div class="flash"><%= message %></div>
-    <% end %>
-    
-  </div>
-
-    <%= yield %>
-
-
-</body>
+  <body>
+    <%= render 'layouts/nav_bar' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>  
+      <%= yield %>
+    </div>
+  </body>
 </html>

@@ -1,9 +1,10 @@
-<% if post.user == current_user %>
-  <p>Author: <%= link_to "You", post.user %>
-<% else %>
-  <p> Author: <%= link_to " #{post.user.email}", post.user %>
-<% end %>
--- Date Posted: <%= post.created_at %> <p>
-<p>- <%= post.body %> -</p>
-<p>Likes: <%= post.likes.count %> </p>
+<%= link_to gravatar_for(post.user, size: 50), post.user %>
+<span class="user"><%= link_to post.user.email, post.user %></span>
+<span class="content"><%= post.body %></span>
+<span class="timestamp">
+  Posted <%= time_ago_in_words(post.created_at) %> ago.
+</span>
+<span class="likes">
+	Likes: <%= post.likes.count %>
+</span>
 

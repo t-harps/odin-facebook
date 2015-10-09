@@ -1,4 +1,6 @@
 <%= form_for(@post) do |f| %>
-  <%= f.text_area :body, placeholder: "Compose new post..." %>
-  <%= f.submit "Post" %>
+  <div class="field">
+    <%= f.text_area :body, placeholder: "Compose new post..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

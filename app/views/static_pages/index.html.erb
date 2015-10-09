@@ -1,7 +1,23 @@
-<p> Welcome to Fakebook. </p>
 <% if user_signed_in? %>
-  <%= render "shared/post_form" %>
-  <% if @feed_items.any? %>
-    <%= render "shared/feed" %>
-  <% end %>
+  <h3> Homepage </h3>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="post_form">
+        <%= render "shared/post_form" %>
+      </section>
+    </aside>
+    <% if @feed_items.any? %>
+      <div class="col-md-8">
+        <%= render "shared/feed" %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="center jumbotron">
+    <h1> Welcome to Fakebook </h1>
+    <br>
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-lg btn-primary" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Sign in", new_user_session_path, class: "btn btn-lg btn-primary" %>
+  </div>
 <% end %>

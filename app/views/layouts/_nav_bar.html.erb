@@ -1,16 +1,21 @@
-<div id="user_nav">
-	-<%= link_to "HOME", root_path %>- 
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <ul class="nav navbar-nav navbar-left"> 
+	  <li><%= link_to "Fakebook", root_path %></li>
+	</ul>
+	<ul class="nav navbar-nav navbar-right"> 
 	  <% if user_signed_in? %>
-		Signed in as <%= link_to current_user.email, current_user %>. --
-		<%= link_to "Sign out", destroy_user_session_path, method: "delete" %> --
-		<%= link_to "Users", users_path %>
-		--
+		<li><%= link_to current_user.email, current_user %></li>
+		<li><%= link_to "Sign out", destroy_user_session_path, method: "delete" %></li>
+		<li><%= link_to "Users", users_path %></li>
 		<% if current_user.friend_requests.count > 0 %>
-		  <%= link_to "#{current_user.friend_requests.count}", current_user %>
+		  <li><%= link_to "#{current_user.friend_requests.count}", current_user, {:style => 'color: #FFFFFF'} %></li>
  		<% end %>
 	  <% else %>
-	    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-		<%= link_to "Sign up", new_user_registration_path %> or 
-		<%= link_to "Sign in", new_user_session_path %>
-	<% end %>
-</div>
+	    <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+		<li><%= link_to "Sign up", new_user_registration_path %></li> 
+		<li><%= link_to "Sign in", new_user_session_path %></li>
+	  <% end %>
+	</ul>
+  </div>
+</header>  

@@ -1,13 +1,15 @@
 <p> Recent posts: </p>
 <% @feed_items.each do |post| %>
-  <%= render post %>
+<ol class="posts">
+  <li id="post-<%= post.id %>"><%= render post %></li>
   <% unless (post.likes.map {|l| l.user_id}).include?(current_user.id) %>
     <%= render 'shared/like_button', object: post %>
   <% else %>
   	<%= render 'shared/unlike_button', object: post %>
   <% end %>
-  <% if post.comments.exists? %>
-    <P>Comments: <%= render post.comments %>
+  <% if post.comments.exists? %> 
+    <ol class="comments"><%= render post.comments %>
   <% end %>
-  <%= render 'shared/comment_form', object: post %> 
+  <%= render 'shared/comment_form', object: post %> </ol>
+</ol>
 <% end %>
