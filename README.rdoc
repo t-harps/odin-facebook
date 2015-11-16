@@ -3,3 +3,5 @@
 Odin-facebook
 
 An attempt to build a basic version of facebook following The Odin Project guide. -- http://www.theodinproject.com/ruby-on-rails/final-project?ref=lnav
+
+Written using the Ruby on Rails framework.
