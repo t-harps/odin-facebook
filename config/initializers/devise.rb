@@ -259,8 +259,8 @@ Devise.setup do |config|
   # When using OmniAuth, Devise cannot automatically set OmniAuth path,
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
-  # config.omniauth :coposition_oauth2,
-  #                 ENV['COPOSITION_CLIENT_ID'],
-  #                 ENV['COPOSITION_CLIENT_SECRET'],
-  #                 callback_url: "https://fakebook-1000.herokuapp.com/users/auth/coposition_oauth2/callback"
+  config.omniauth :coposition_oauth2,
+                  ENV['COPOSITION_CLIENT_ID'],
+                  ENV['COPOSITION_CLIENT_SECRET'],
+                  callback_url: "https://fakebook-1000.herokuapp.com/users/auth/coposition_oauth2/callback"
 end
