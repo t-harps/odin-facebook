@@ -16,7 +16,7 @@
   <div class="center jumbotron">
     <h1> Welcome to Fakebook </h1>
     <br>
-    <%= link_to "Sign in with Coposition",  user_coposition_oauth2_omniauth_authorize_path, class: "btn btn-lg btn-primary" %>
+    <%= button_to "Sign in with Coposition",  user_coposition_oauth2_omniauth_authorize_path, class: "btn btn-lg btn-primary" %>
     <%= link_to "Sign up", new_user_registration_path, class: "btn btn-lg btn-primary" %>
     <%= link_to "Sign in", new_user_session_path, class: "btn btn-lg btn-primary" %>
   </div>
