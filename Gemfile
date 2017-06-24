@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.2.7"
+ruby "2.3.1"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -36,7 +36,7 @@ gem 'rails_12factor', group: :production
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'pry'
 gem 'omniauth-coposition-oauth2', :git => "git://github.com/earlymarket/omniauth-coposition-oauth2"
 
 group :development, :test do
